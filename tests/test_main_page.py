@@ -11,19 +11,19 @@ class TestMainPage:
     @allure.title('Клик по Яндекс и переход на Дзен')
     @allure.description('После клика по Яндекс в новом окне открывается Дзен')
     def test_check_yandex_logo_click(self, driver):
-        base_page = BasePage(driver)
-        base_page.click_yandex_logo()
-        url = base_page.wait_for_url(DZEN_WEBSITE)
+        main_page = MainPage(driver)
+        main_page.click_yandex_logo()
+        url = main_page.wait_for_url(DZEN_WEBSITE)
         assert DZEN_WEBSITE in url
 
     @allure.title('Клик по Самокат')
     @allure.description('После клика на самокат попадаем на главную страницу')
     def test_check_scooter_logo_click(self, driver):
         order_page = OrderPage(driver)
-        base_page = BasePage(driver)
+        main_page = MainPage(driver)
         order_page.click_header_button_order()
         order_url = driver.current_url
-        base_page.click_scooter_logo()
+        main_page.click_scooter_logo()
         home_url = driver.current_url
         assert order_url != home_url
 
